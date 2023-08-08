@@ -11,15 +11,24 @@ from timing import Timing
 from mmdet3d.apis import init_model, inference_detector
 
 # 使用的config和checkpoint路径
-config_file='/mmdetection3d/ckpt/pointpillars_hv_secfpn_8xb6-160e_kitti-3d-car.py'
-checkpoint_file='/mmdetection3d/ckpt/hv_pointpillars_secfpn_6x8_160e_kitti-3d-car_20220331_134606-d42d15ed.pth'
+# PointPillars
+# config_file='/mmdetection3d/ckpt/pointpillars_hv_secfpn_8xb6-160e_kitti-3d-car.py'
+# checkpoint_file='/mmdetection3d/ckpt/hv_pointpillars_secfpn_6x8_160e_kitti-3d-car_20220331_134606-d42d15ed.pth'
+# class_names = [
+#     'car', 'truck', 'trailer', 'bus', 'construction_vehicle', 'bicycle',
+#     'motorcycle', 'pedestrian', 'traffic_cone', 'barrier'
+# ]
+
+# CenterPoint
+config_file='/mmdetection3d/ckpt/centerpoint_voxel0075_second_secfpn_head-dcn-circlenms_8xb4-cyclic-20e_nus-3d.py'
+checkpoint_file='/mmdetection3d/ckpt/centerpoint_0075voxel_second_secfpn_dcn_circlenms_4x8_cyclic_20e_nus_20220810_025930-657f67e0.pth'
+class_names = [
+    'car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier',
+    'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+]
 
 app = Flask(__name__)
 
-class_names = [
-    'car', 'truck', 'trailer', 'bus', 'construction_vehicle', 'bicycle',
-    'motorcycle', 'pedestrian', 'traffic_cone', 'barrier'
-]
 
 # 初始化模型
 model = init_model(
