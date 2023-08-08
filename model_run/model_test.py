@@ -16,6 +16,11 @@ checkpoint_file='/mmdetection3d/ckpt/hv_pointpillars_secfpn_6x8_160e_kitti-3d-ca
 
 app = Flask(__name__)
 
+class_names = [
+    'car', 'truck', 'trailer', 'bus', 'construction_vehicle', 'bicycle',
+    'motorcycle', 'pedestrian', 'traffic_cone', 'barrier'
+]
+
 # 初始化模型
 model = init_model(
     config_file, 
@@ -147,7 +152,7 @@ def parse_detection(
     
     return [
         {
-            "label": labels_list[i],
+            "label": class_names[labels_list[i]].upper(),
             "confidence": scores_list[i],
             "x": bboxes_list[i][0],
             "y": bboxes_list[i][1],
