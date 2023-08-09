@@ -168,7 +168,7 @@ def parse_detection(
             "confidence": scores_list[i],
             "x": bboxes_list[i][0],
             "y": bboxes_list[i][1],
-            "z": bboxes_list[i][2],
+            "z": bboxes_list[i][2] + bboxes_list[i][5]/2,
             "dx": bboxes_list[i][3],
             "dy": bboxes_list[i][4],
             "dz": bboxes_list[i][5],
