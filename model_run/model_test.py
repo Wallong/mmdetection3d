@@ -151,7 +151,7 @@ def parse_array(
     pcd_df['i'] = min_max_scaler(pcd_df['i'].values)
 
     # 添加ring id
-    pcd_df.insert(size, 'r', 0)
+    pcd_df.insert(pcd_df.shape[1], 'r', 0)
     
     return pcd_df.values
 
